@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Storyline Designer — Browser Game</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0"
+  }
+}
+</script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Storyline Designer</h1>
+      <p class="tagline">An adaptive HTML5 browser-game storyline — editable, exportable, and modular.</p>
+    </header>
+
+    <section class="controls" aria-label="Storyline generation controls">
+      <label>
+        Protagonist name
+        <input id="heroName" type="text" placeholder="Ari" value="Ari">
+      </label>
+
+      <label>
+        Tone / Theme
+        <select id="themeSelect">
+          <option value="Arcane-Steampunk">Arcane-Steampunk (mystical machines)</option>
+          <option value="Neo-Noir">Neo-Noir (city, shadows, neon)</option>
+          <option value="Oceanic-Fantasy">Oceanic Fantasy (islands & sea)</option>
+          <option value="Solar-Punk">Solar-Punk (eco-tech & rooftop gardens)</option>
+          <option value="Void-Pirate">Void-Pirate (cosmic salvage & drifting wrecks)</option>
+          <option value="Medieval-Fantasy">Medieval-Fantasy (castles & old magics)</option>
+          <option value="Desert-Mythic">Desert-Mythic (sand, ruins, and ancient gods)</option>
+          <option value="Cyber-Funk">Cyber-Funk (rhythm & rebellion)</option>
+          <option value="Gothic-Horror">Gothic-Horror (monsters & mystery)</option>
+          <option value="Cozy-Apocalyptic">Cozy-Apocalyptic (wholesome ruins)</option>
+          <option value="Galactic-Detective">Galactic Detective (alien clues & space cases)</option>
+          <option value="Micro-World-Adventure">Micro-World Adventure (tiny hero, giant world)</option>
+        </select>
+      </label>
+
+      <button id="regenBtn">Regenerate Storyline</button>
+      <button id="makeGameBtn" disabled>Make This Game</button>
+    </section>
+
+    <section class="content">
+      <aside class="summary">
+        <h2>Quick Snapshot</h2>
+        <div id="snapshot" role="region" aria-live="polite"></div>
+      </aside>
+
+      <article class="story-outline" id="outline" role="main" aria-live="polite">
+        <!-- Storyline will be injected here -->
+      </article>
+    </section>
+
+    <footer class="footer">
+      <small>Designed for HTML5 browser games — modular, testable, and easy to implement.</small>
+    </footer>
+  </main>
+
+  <div class="modal-overlay" id="gameModal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+        <header class="modal-header">
+            <h2 id="modal-title">Game Preview</h2>
+            <button id="modalCloseBtn" aria-label="Close modal">&times;</button>
+        </header>
+        <div class="modal-body">
+            <iframe id="gameIframe" title="Generated Game Preview"></iframe>
+        </div>
+        <footer class="modal-footer">
+            <button id="downloadGameBtn">Download Game Files</button>
+        </footer>
+    </div>
+  </div>
+
+
+  <script type="module" src="index.tsx"></script>
+</body>
+</html>
